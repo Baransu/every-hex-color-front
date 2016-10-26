@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -69,11 +69,17 @@ const AppComponent = ({color, counter}) => {
   );
 }
 
-const App = connect(
+const AppWithConnect = connect(
   (store) => store,
   (dispatch) => ({
 
   })
 )(AppComponent);
+
+const App = () => (
+  <Provider store={store}>
+    <AppWithConnect />
+  </Provider>
+);
 
 export default App;
