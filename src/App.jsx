@@ -27,7 +27,8 @@ export const store = createStore(reducer, applyMiddleware(thunk));
 
 const AppComponent = ({color, counter}) => {
 
-  const colorStringHex = '#' + color.toString(16);
+  const colorString = color.toString(16);
+  const colorStringHex = '#' + colorString;
 
   const segments = ("0".repeat(8 - counter.toString().length) + counter.toString()).split('');
 
@@ -47,13 +48,7 @@ const AppComponent = ({color, counter}) => {
         </div>
 
         <div className="col-xs-12 description">
-
-          <form className="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
-            <div className="input-field">
-              <input id="color" type="text" className="" defaultValue={colorStringHex}/>
-            </div>
-          </form>
-
+          <h5 className="col-xs-6 col-xs-offset-3 text-center">{`0x${colorString}`}</h5>
         </div>
 
         <div className="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 color m-t-20 m-b-20" style={{backgroundColor: colorStringHex}}></div>
@@ -68,7 +63,7 @@ const AppComponent = ({color, counter}) => {
       </div>
       {/* add gitusers */}
       <footer className="col-xs-12 m-t-10 text-center">
-        Copyright © 2016 Cichocinski & Hajto 
+        Copyright © 2016 Tomasz Cichocinski & Jakub Hajto
       </footer>
     </div>
   );
