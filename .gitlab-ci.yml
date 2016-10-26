@@ -1,0 +1,23 @@
+image: node:latest
+
+cache:
+  key: "$CI_BUILD_REPO"
+  paths:
+    - node_modules/
+
+stages:
+  - deploy
+
+pages:
+  stage: deploy
+  script:
+    - npm install --silent
+    - CI=true npm test
+    - npm run build
+    - mkdir .public
+    - cp -r build public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
