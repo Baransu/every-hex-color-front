@@ -57,7 +57,7 @@ const AppComponent = ({color, counter}) => {
           <button className="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 btn btn-custom blue-grey lighten-5">Get new color!</button>
         </div>
 
-        <div className="col-xs-12 m-t-20">
+        <div className="col-xs-12 m-t-20 text-center">
           tutaj bedzie jakis ladny opis co to jest i do czego sluzy ta ladna bardzo piekna strona
         </div>
       </div>
