@@ -20,7 +20,8 @@ export default function connectToSocket(channelName) {
   channel = socket.channel(channelName);
   channel.join(5000)
     .receive('ok', data => {
-      console.log(data);
+      store.dispatch({type: 'NEXT_COLOR', color: data.color });
+      store.dispatch({type: 'UPDATE_COUNTER', counter: data.counter });
     })
     .receive('error', err => {
       console.log(err);
@@ -32,7 +33,7 @@ export default function connectToSocket(channelName) {
   });
 
   channel.on('counter_bump', payload => {
-    store.dispatch({type: 'UPDATE_COUNTER' });
+    store.dispatch({type: 'UPDATE_COUNTER', counter: payload.counter });
   });
 
 }

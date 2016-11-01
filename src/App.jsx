@@ -28,10 +28,7 @@ export const store = createStore(combineReducers({
 
   counter: (state = MAX_COLOR, action) => {
     if(action.type === 'UPDATE_COUNTER')
-      return state - 1;
-
-    else if (action.type === 'NEXT_COLOR')
-      return state - 1;
+      return MAX_COLOR - action.counter;
 
     return state;
   }
