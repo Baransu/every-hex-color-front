@@ -15,7 +15,7 @@ const MAX_COLOR = 256 * 256 * 256 - 1;
 /*
    redux store handing all actions
  */
-const store = createStore(combineReducers({
+export const store = createStore(combineReducers({
 
   color: (state = MAX_COLOR, action) => {
     if(action.type === 'NEXT_COLOR')
@@ -24,12 +24,12 @@ const store = createStore(combineReducers({
     return state;
   },
 
-  counter: (state = 0, action) => {
+  counter: (state = MAX_COLOR, action) => {
     if(action.type === 'UPDATE_COUNTER')
-      return state + 1;
+      return state - 1;
 
     else if (action.type === 'NEXT_COLOR')
-      return state + 1;
+      return state - 1;
 
     return state;
   }

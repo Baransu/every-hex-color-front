@@ -1,4 +1,5 @@
 import { Socket } from 'phoenix-socket';
+import { store } from './App.jsx';
 
 let channel;
 
@@ -19,6 +20,7 @@ export default function connectToSocket(channelName) {
   channel = socket.channel(channelName);
   channel.join(5000)
     .receive('ok', data => {
+      store.dispatch({ type: 'NEXT_COLOR', color: data.color });
       console.log(data);
     })
     .receive('error', err => {
