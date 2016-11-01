@@ -56,12 +56,16 @@ body {
   border-bottom: 1px solid rgba(100, 100, 100, 0.25);
 }
 
-.head {
+header > h1 {
   text-align: center;
 }
 
 input {
   width: 75%;
+}
+
+.app {
+  height: 100vh;
 }
 
 .color {
@@ -88,19 +92,18 @@ input {
   font-size: 35px;
 }
 
-/* label underline focus color */
 .input-field input[type=text]:focus {
   border-bottom: 1px solid #eceff1;
   box-shadow: 0 1px 0 0 #eceff1;
 }
 
 .counter-container {
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid black;
   padding: 0;
 }
 
-.segment {
+.counter > div {
   height: 100%;
   border-left: 1px solid black;
   box-sizing: box;
@@ -115,5 +118,7 @@ input {
 footer {
   border-top: 1px solid rgba(0,0,0, 0.1);
   background-color: #f3f3f3;
-  padding: 10px;
+  position: absolute !important;
+  bottom: 0;
+  padding: 15px;
 }
