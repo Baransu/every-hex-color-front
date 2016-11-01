@@ -124,19 +124,13 @@ const AppWithConnect = connect(
   }),
 
   {
-    getNextColor: () =>
-      dispatch => {
+    getNextColor: () => {
+      return dispatch => {
         dispatchSocketMessage('get')
-          .then(res => {
-            console.log(res);
-            dispatch({ type: 'NEXT_COLOR', color: res.color })
-          }
-            
-          )
-          .catch(err =>
-            dispatch({type: 'ERR'})
-          )
+          .then(res => dispatch({ type: 'NEXT_COLOR', color: res.color }))
+          .catch(err => dispatch({type: 'ERR'}))
       }
+    }
   }
 
 )(AppComponent)

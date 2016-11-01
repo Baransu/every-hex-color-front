@@ -39,7 +39,6 @@ export default function connectToSocket(channelName) {
 }
 
 export function dispatchSocketMessage(message) {
-  console.log('socket message', message);
   return new Promise((resolve, reject) => {
     channel.push(message)
       .receive('ok', resolve)
