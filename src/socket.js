@@ -20,10 +20,28 @@ export default function connectToSocket(channelName) {
   channel = socket.channel(channelName);
   channel.join(5000)
     .receive('ok', data => {
-      store.dispatch({ type: 'NEXT_COLOR', color: data.color });
       console.log(data);
     })
     .receive('error', err => {
       console.log(err);
     });
+
+  channel.on('color_generated', payload => {
+    console.log(payload.color);
+    store.dispatch({type: 'NEXT_COLOR', color: payload.color });
+  });
+
+  channel.on('counter_bump', payload => {
+    store.dispatch({type: 'UPDATE_COUNTER' });
+  });
 }
+
+export function dispatchSocketMessage(message) {
+  console.log('socket message', message);
+  return new Promise((resolve, reject) => {
+    channel.push(message)
+      .receive('ok', resolve)
+      .receive('err', reject);
+  });
+}
+
