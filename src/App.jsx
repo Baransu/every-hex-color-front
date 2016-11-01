@@ -43,7 +43,9 @@ export const store = createStore(combineReducers({
  */
 const AppComponent = ({ color, counter, getNextColor }) => {
 
-  const colorString = color.toString(16);
+  let colorString = (color).toString(16);
+  colorString = "0".repeat(6 - colorString.length) + colorString;
+
   const colorStringHex = '#' + colorString;
 
   const segments = ("0".repeat(8 - counter.toString().length) + counter.toString()).split('');

@@ -34,6 +34,7 @@ export default function connectToSocket(channelName) {
   channel.on('counter_bump', payload => {
     store.dispatch({type: 'UPDATE_COUNTER' });
   });
+
 }
 
 export function dispatchSocketMessage(message) {
